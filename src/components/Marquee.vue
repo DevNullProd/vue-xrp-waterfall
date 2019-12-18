@@ -12,8 +12,8 @@
 </template>
 
 <script>
-var TxText = require('../mixins/tx_text').default
-var TxType = require('../mixins/tx_type').default
+import TxText from '../mixins/tx_text'
+import TxType from '../mixins/tx_type'
 
 const MAX_ITEMS =    7;
 const TARGET    = -500;

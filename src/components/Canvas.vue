@@ -6,8 +6,8 @@
 </template>
 
 <script>
-var TxColors = require('../mixins/tx_colors').default
-var TxType   = require('../mixins/tx_type').default
+import TxColors from '../mixins/tx_colors'
+import TxType   from '../mixins/tx_type'
 
 export default {
   name: 'Canvas',
