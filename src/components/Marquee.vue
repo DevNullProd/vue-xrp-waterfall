@@ -106,7 +106,7 @@ export default {
       content.tx   = tx;
       content.hash = hash;
       content.text = text;
-      content.url  = "/tx/" + hash;
+      content.url  = "https://xrp1ntel.com/tx/" + hash;
       content.pos  = this.width;
 
       this.current += 1;
