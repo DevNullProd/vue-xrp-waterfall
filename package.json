@@ -1,0 +1,47 @@
+{
+  "name": "vue-xrp-waterfall",
+  "version": "0.0.1",
+  "scripts": {
+    "example": "poi --serve",
+    "build": "bili --plugin vue"
+  },
+  "bili": {
+    "moduleName": "vue-xrp-waterfall",
+    "format": [
+      "cjs",
+      "umd",
+      "umd-min",
+      "es"
+    ],
+    "external": "vue"
+  },
+  "poi": {
+    "entry": "examples/index.js",
+    "output": {
+      "dir": "examples/dist",
+      "html": {
+        "template": "examples/index.html"
+      },
+      "publicUrl": "/vue-xrp-waterfall/"
+    }
+  },
+  "description": "Visual rendering of XRP Network Transactions",
+  "keywords": [
+    "xrp",
+    "blockchain",
+    "component",
+    "waterfall"
+  ],
+  "main": "dist/vue-xrp-waterfall.js",
+  "license": "MIT",
+  "author": "Mo Morsi <devnullproductions@gmail.com>",
+  "repository": "github:DevNullProd/vue-xrp-waterfall",
+  "devDependencies": {
+    "@vue/cli-service": "^4.1.1",
+    "bili": "^3.0.3",
+    "rollup-plugin-vue": "^5.1.4",
+    "poi": "^12.7.4",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
