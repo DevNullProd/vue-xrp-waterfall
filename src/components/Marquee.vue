@@ -2,10 +2,11 @@
   <div id="xrp_waterfall_marquee"
        v-on:mouseover="on_hover()"
        v-on:mouseleave="on_unhover()">
-    <div v-for="i in (items.length-1)"
+    <div v-for="i in items.length"
          class="xrp_waterfall_marquee_item"
-         v-bind:style="{transform : 'translateX(' + items[i].pos + 'px)'}">
-      <a v-bind:href="items[i].url">{{items[i].text}}</a>
+         v-bind:ref="'xrp_waterfall_marquee_item_' + (i-1)"
+         v-bind:style="{transform : 'translateX(' + items[i-1].pos + 'px)'}">
+      <a v-bind:href="items[i-1].url">{{items[i-1].text}}</a>
     </div>
   </div>
 </template>
@@ -41,8 +42,6 @@ export default {
 
   data : function(){
     return {
-      last_tx : new Date(),
-
       width : 0,
       items : create_default(),
       current : 0,
@@ -69,8 +68,6 @@ export default {
   methods : {
     reset : function(){
       this.width   = this.$parent.$refs.xrp_waterfall.clientWidth;
-      this.last_tx = new Date();
-
       for(var i = 0; i < this.items.length; i+= 1)
         this.items[i].pos = TARGET;
     },
@@ -91,10 +88,17 @@ export default {
       var text = this.text_for(tx, type);
       if(!text) return;
 
-      // TODO instead of time based blocker, check if current component is fully visible (plus margin)
-      var now = new Date();
-      if(now - this.last_tx < 750) return;
-      this.last_tx = now;
+      // ensure previous item is completely revealed
+      var prev = (this.current == 0 ? MAX_ITEMS : this.current) - 1;
+      var prev_item      = this.$refs['xrp_waterfall_marquee_item_' + prev][0];
+      var prev_transform = parseInt(prev_item.style.transform.replace("translateX(", "").replace("px)", ""));
+      var prev_right     = prev_transform + prev_item.clientWidth;
+
+      // TODO if before we return here, queue up a few txs
+      //      to be added inbetween closed ledgers for
+      //      continuous marquee population (mantain this queue size
+      //      and periodically add to marquee)
+      if(prev_right > (this.width - 25)) return; // also add a little extra padding
 
       var hash = tx['transaction']['hash'];
 
