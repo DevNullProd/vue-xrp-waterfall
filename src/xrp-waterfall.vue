@@ -21,7 +21,7 @@ import Canvas   from './components/Canvas.vue'
 import Marquee  from './components/Marquee.vue'
 import Settings from './components/Settings.vue'
 
-var HasWebSocket = require('./mixins/websocket')
+import HasWebSocket from './mixins/websocket'
 
 ///
 
