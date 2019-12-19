@@ -1,6 +1,6 @@
 {
   "name": "vue-xrp-waterfall",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "scripts": {
     "example": "poi --serve",
     "build": "bili --plugin vue"
