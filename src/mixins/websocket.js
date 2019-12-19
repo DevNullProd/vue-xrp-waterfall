@@ -11,16 +11,16 @@ module.exports = {
 
   methods : {
     init_ws : function(){
-      ws = new WebSocket("wss://s1.ripple.com:443");
-      ws.onopen = function(){
+      this.ws = new WebSocket("wss://s1.ripple.com:443");
+      this.ws.onopen = function(){
         var json = JSON.stringify({
                      'command' : 'subscribe',
                      'streams' : ["transactions"],
                    });
-        ws.send(json);
-      }
+        this.ws.send(json);
+      }.bind(this)
 
-      ws.onmessage = function (event) {
+      this.ws.onmessage = function (event) {
         var json = JSON.parse(event.data);
         if(!json["transaction"]) return;
 
@@ -38,7 +38,7 @@ module.exports = {
         if(now - this.last_tx_time > WS_TIMEOUT){
           this.connecting = true;
 
-          ws.close();
+          this.ws.close();
           this.init_ws();
           this.last_tx_time = now;
         }
