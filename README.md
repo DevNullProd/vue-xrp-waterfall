@@ -33,6 +33,8 @@ Once installed, the transaction waterfall can be included simply by using & addi
 
 <script>
 import XRPWaterfall from 'vue-xrp-waterfall'
+import 'vue-xrp-waterfall/dist/vue-xrp-waterfall.css'
+
 Vue.use(XRPWaterfall)
 
 export default {
@@ -43,6 +45,9 @@ export default {
 #container{
   /* Style container appropriately,
      set dimensions or full screen.
+
+     The waterfall will automatically
+     be resized to fill container!
    */
   height: 100%;
   width: 100%;

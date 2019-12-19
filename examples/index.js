@@ -1,6 +1,12 @@
 import Vue from 'vue'
-import XRPWaterfall from '../src/index.js'
 import App from './App.vue';
+
+import XRPWaterfall from '../src/index.js'
+
+// If installing this from npm installed plugin, eg
+//   import XRPWaterfall from 'vue-xrp-waterfall'
+// Also be sure to import css!
+//   import 'vue-xrp-waterfall/dist/vue-xrp-waterfall.css'
 
 Vue.use(XRPWaterfall)
 
